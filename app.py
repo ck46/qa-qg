@@ -1,3 +1,4 @@
+import re
 import streamlit as st
 from qg_pipeline import Pipeline
 
@@ -5,6 +6,11 @@ from qg_pipeline import Pipeline
 import nltk
 nltk.download('punkt')
 
+def preprocess_text(text):
+    text = re.sub('\[[0-9]+\]', '', text)
+    text = re.sub('[\s]{2,}', ' ', text)
+    text = text.strip()
+    return text
 
 # Add a model selector to the sidebar
 q_model = st.sidebar.selectbox(
@@ -30,7 +36,7 @@ pipeline = Pipeline(
 )
 
 if len(txt) >= 1:
-    autocards = pipeline(txt)
+    autocards = pipeline(preprocess_text(txt))
 else:
     autocards = []
 

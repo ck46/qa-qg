@@ -63,7 +63,7 @@ class QGHandler:
     self.model = AutoModelForSeq2SeqLM.from_pretrained(model)
     self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)
     self.device = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
-    self.model.to(device)
+    self.model.to(self.device)
 
   def __call__(self, answers, context):
     tokenized_inputs = self.preprocess(answers, context)

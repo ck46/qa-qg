@@ -26,7 +26,7 @@ pipeline = Pipeline(
     q_model=q_model,
     q_tokenizer=q_model,
     a_model=a_model,
-    q_tokenizer=a_model
+    a_tokenizer=a_model
 )
 
 if len(txt) >= 1:

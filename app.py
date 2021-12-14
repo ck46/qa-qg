@@ -18,7 +18,7 @@ a_model = st.sidebar.selectbox(
 )
 
 st.header('Question-Answer Generation')
-st.write(f'Model in use: {model}')
+st.write(f'Model: {q_model}')
 
 txt = st.text_area('Text for context')
 

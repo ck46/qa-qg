@@ -2,3 +2,4 @@ torch
 transformers
 sentencepiece
 nltk
+numpy

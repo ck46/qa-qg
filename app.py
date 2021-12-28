@@ -15,12 +15,12 @@ def preprocess_text(text):
 # Add a model selector to the sidebar
 q_model = st.sidebar.selectbox(
     'Select Question Generation Model',
-    ('ck46/t5-base-squad-qa-qg', 'ck46/t5-small-squad-qa-qg')
+    ('ck46/t5-base-hotpot-qa-qg', 'ck46/t5-small-hotpot-qa-qg')
 )
 
 a_model = st.sidebar.selectbox(
     'Select Answer Extraction Model',
-    ('ck46/t5-base-squad-qa-qg', 'ck46/t5-small-squad-qa-qg')
+    ('ck46/t5-base-hotpot-qa-qg', 'ck46/t5-small-hotpot-qa-qg')
 )
 
 st.header('Question-Answer Generation')

@@ -12,7 +12,7 @@ class AEHandler:
   def __init__(self, model, tokenizer):
     self.model = AutoModelForSeq2SeqLM.from_pretrained(model)
     self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)
-    self.device = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
+    self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     self.model.to(self.device)
 
   def __call__(self, context):
@@ -62,7 +62,7 @@ class QGHandler:
   def __init__(self, model, tokenizer):
     self.model = AutoModelForSeq2SeqLM.from_pretrained(model)
     self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)
-    self.device = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
+    self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     self.model.to(self.device)
 
   def __call__(self, answers, context):

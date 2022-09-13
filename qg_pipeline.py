@@ -41,7 +41,7 @@ class AEHandler:
 
     tokenized_inputs = self.tokenizer.batch_encode_plus(
         inputs, 
-        max_length=512,
+        max_length=256,
         add_special_tokens=True,
         truncation=True,
         padding="max_length",
@@ -54,6 +54,8 @@ class AEHandler:
     outs = self.model.generate(
         input_ids=inputs['input_ids'].to(self.device),
         attention_mask=inputs['attention_mask'].to(self.device),
+        num_beams=5,
+        temperature=0.7,
         max_length=32)
 
     dec = [self.tokenizer.decode(ids, skip_special_tokens=False).replace('<pad> ', '').strip() for ids in outs]
@@ -104,7 +106,8 @@ class QGHandler:
         input_ids=inputs['input_ids'].to(self.device), 
         attention_mask=inputs['attention_mask'].to(self.device),
         max_length=32,
-        num_beams=4,
+        num_beams=5,
+        temperature=0.7,
       )
 
     questions = [self.tokenizer.decode(ids, skip_special_tokens=True) for ids in outs]
